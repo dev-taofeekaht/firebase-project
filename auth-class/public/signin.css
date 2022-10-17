@@ -1,0 +1,46 @@
+
+ #signin{
+   /* background: rgba(138, 134, 134, 0.2);
+   border-radius: 16px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blue(7.8px);
+   -webkit-backdrop-filter: blur(6.8px);
+   border: 1px solid rgba(138, 134, 134, 0.3);
+   font-family: 'Times New Roman', Times, serif; */
+   padding-top: 100px;
+} 
+
+#bgd{
+    background-image: url('pexels-pixabay-269583.jpg');
+    background-size: cover;
+}
+
+#useremail{
+ border-radius: 5px;
+ height: 50px;
+ width: 250px;
+ /* border: none; */
+ background: none;
+ text-align: center;
+/* font-weight: 30px; */
+ 
+}
+
+
+#userpassword{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   }
+
+   #submitBtn{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background:wheat;
+    text-align: center;
+   }

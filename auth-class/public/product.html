@@ -1,0 +1,96 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="product.css">
+
+    </head>
+    <body id="bgd">
+        <div id="myProducts"></div>
+        <div>
+            <input type="text" id="itemname" placeholder="Item name"> <br> <br>
+            <input type="text" id="itemquantity" placeholder="Item quantity"> <br> <br>
+            <input type="text" id="itemprice" placeholder="Item price"> <br> <br>
+            <input type="file" id="itemfile"> <br> <br>
+
+            <button id="submit">Add to cart</button>
+        </div>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+            import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+            import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyDYljyHQN8G6xCEkdn4e9Uw4qMoczZ--8A",
+              authDomain: "first-firebase-66205.firebaseapp.com",
+              databaseURL: "https://first-firebase-66205-default-rtdb.firebaseio.com",
+              projectId: "first-firebase-66205",
+              storageBucket: "first-firebase-66205.appspot.com",
+              messagingSenderId: "716307003343",
+              appId: "1:716307003343:web:59f7d97bf3e131243f04ba"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth();
+            const db = getDatabase();
+
+            onAuthStateChanged(auth, (user)=>{
+                if (!user){
+                    window.location ="signin.html"
+                }
+            })
+            let itemid = 0
+            let itemArray = [];
+
+            let itemDb = ref(db, "items");
+            onValue(itemDb, (snapshot)=>{
+                let itemArray = snapshot.val();
+                console.log(itemArray);
+                if(itemArray){
+                    itemid =itemArray.length
+                    displayItem(itemArray)
+                }else{
+                    itemid = 0;
+                }
+            })
+
+
+      
+      document.getElementById("logOut").addEventListener("click", function(){
+      signOut(auth).then((user)=>{
+        window.location = "signin.html"
+      }).catch((error)=>{
+          console.log(error);
+       
+      })
+      })
+    
+
+
+    
+      function displayItem (itemArray){
+          itemArray.map((item, index)=>{
+              myProducts.innerHTML +=`
+              <div id="products">
+                <div class ="col-12 col-md-3">NAME: ${item.item_name}</div>
+                <div class ="col-12 col-md-3">QUANTITY: ${item.quantity_name}</div>
+                <div class ="col-12 col-md-3">PRICE: ${item.item_price}</div>
+                <div class ="col-12 col-md-3">DESCRIPTION: ${item.item_description}</div>
+                
+                </div>
+              
+              `
+          })
+      }
+        </script>
+
+    </body>
+    </html>

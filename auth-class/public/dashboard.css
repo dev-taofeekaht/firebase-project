@@ -1,0 +1,53 @@
+/* #admin{ */
+    /* text-align: center !important; */
+    /* justify-content: center !important; */
+/* } */
+
+#bgd{
+    background-image: url('pexels-pixabay-269583.jpg');
+    background-size: cover;
+}
+
+#itemName{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+}
+#quantityName{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+}
+#itemPrice{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+}
+#itemdescription{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+}
+#saveItem{
+ background-color: aqua;
+ border: none;
+ border-radius: 5px;
+ padding: 10px;
+ width:250px;
+}

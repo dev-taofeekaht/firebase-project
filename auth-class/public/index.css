@@ -1,0 +1,66 @@
+#nav{
+    height: 40px;
+    background-color:gray;
+    
+}
+a{
+    list-style: none;
+    text-decoration: none;
+    margin: 10px;
+    float: right;
+    color: white;
+    
+    }
+#bgd{
+    background-image: url('pexels-pixabay-269583.jpg');
+    background-size: cover;
+}
+#useremail{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+}
+   #userpassword{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+   }
+
+   #username{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+   }
+   #userlastname{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+   }
+   
+   #phonenum{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+
+   }
+

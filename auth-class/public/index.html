@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="index.css">
+    
+    <body id="bgd">
+      <div id="nav">
+        <a href="dashboard.html">Add products</a>
+        <a href="product.html">products</a>
+        
+      </div>
+  <!-- <form action=""> -->
+    <div class="m-auto" >
+    <input type="text" id="username" placeholder="name" class="form-control w-25 m-auto mt-5 " >
+    <input type="text" id="userlastname" placeholder="lastname" class="form-control w-25 m-auto mt-3 ">
+    <input type="text" id="phonenum" placeholder="phone number" class="form-control w-25 m-auto mt-3">
+    <input type="text" id="useremail" placeholder="email" class="form-control w-25 m-auto mt-3" >
+    <input type="text" id="userpassword" placeholder="password" class="form-control w-25 m-auto mt-3">
+    <button id="submitBtn" class="btn btn-outline-primary m-auto w-25 mt-3 d-block" >submit</button>
+    <button class="btn btn-outline-danger w-25 m-auto mt-3 d-block" id="signUpg">sign up with google chrome</button>
+
+    <!-- <a href="signin.html">already have an account</a> -->
+  </div>
+  <!-- </form> -->
+
+  
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+      import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+      import { getDatabase, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+
+      
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDYljyHQN8G6xCEkdn4e9Uw4qMoczZ--8A", 
+        authDomain: "first-firebase-66205.firebaseapp.com",
+        databaseURL: "https://first-firebase-66205-default-rtdb.firebaseio.com",
+        projectId: "first-firebase-66205",
+        storageBucket: "first-firebase-66205.appspot.com",
+        messagingSenderId: "716307003343",
+        appId: "1:716307003343:web:59f7d97bf3e131243f04ba"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      const db = getDatabase();
+
+
+      let userArray = [];
+      let userId = 0;
+
+
+      let userRef = ref(db,"users");
+      onValue(userRef, (snapshot)=>{
+        let userArray = snapshot.val();
+        if (userArray){
+          userId = userArray.length;
+        } else{
+          userId = 0;
+        }
+      })
+
+   
+      document.getElementById("submitBtn").addEventListener("click", function(){
+       let userName = username.value;
+       let userLastName = userlastname.value;
+       let phoneNum = phonenum.value;
+       
+        let email = useremail.value;
+        let password = userpassword.value;
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((Credentials)=>{
+          let user_id = Credentials.user.uid;
+          let userObj = {userName, userLastName, phoneNum, email, user_id};
+          let dbRef = ref(db, `users/${userId}`);
+          set (dbRef, userObj)
+            window.location = "signin.html"
+        
+        }).catch((error)=>{
+          alert(error);
+        })
+      })
+
+      
+      document.getElementById('signUpg').addEventListener("click", function(){
+        signInWithPopup(auth, provider)
+        .then((result)=>{
+          console.log(result);
+        }).catch((error)=>{
+          alert(error.code)
+        })
+      })
+    </script>
+  </body>
+</html>

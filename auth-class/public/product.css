@@ -1,0 +1,62 @@
+#bgd{
+    background-image: url('pexels-pixabay-269583.jpg');
+    background-size: cover;
+}
+
+#myProducts{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    flex-wrap: wrap;
+    /* grid-template-rows:3, 3fr; */
+}
+#products{
+    width: 300px ;
+    border: thin solid black;
+    margin-top: 10px;
+    border-radius: 15px;
+    text-align: center;
+    
+}
+#itemname{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+    
+   }
+
+   #itemquantity{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+    
+   }
+
+   #itemprice{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    background: none;
+    text-align: center;
+   /* font-weight: 30px; */
+    
+   }
+   #submit{
+    border-radius: 5px;
+    height: 50px;
+    width: 250px;
+    /* border: none; */
+    /* background: none; */
+    text-align: center;
+   /* font-weight: 30px; */
+    
+   }
